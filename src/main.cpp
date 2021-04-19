@@ -18,5 +18,6 @@ int main() {
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+  // -> add read file & save to file for high scores.
   return 0;
 }

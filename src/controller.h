@@ -13,3 +13,9 @@ class Controller {
 };
 
 #endif
+
+/*
+Controller Class. 
+-> Handles the user input & directs snake movement direction.
+-> Snake is passed by reference.
+*/

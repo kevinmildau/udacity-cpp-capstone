@@ -39,3 +39,15 @@ void Controller::HandleInput(bool &running, Snake &snake) const {
     }
   }
 }
+
+/*
+-> ChangeDirection()
+Simple movement direction control: if direction is opposite, the snake would turn into itself. This 
+is an illegal move. Moreover, if the snake is size 1, it cannot turn onto itself and hence any 
+movement is legal. 
+--> HandleInput()
+interface between valid control input and changeDirection based on SDL2 library. Takes a snake
+reference as an input, as well as a reference to a boolean called running. Running is defined as 
+true in front of the gameloop in game.cpp. Unless the gameloop is terminated, it will always be
+true.
+*/

@@ -49,6 +49,20 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     }
   }
 }
+// -> ADD: PlacePoison method. <---------------------------------------------------------------------------------------
+void Game::PlacePoison(){
+  int x, y;
+  while (true) {
+    x = random_w(engine);
+    y = random_h(engine);
+    if (!snake.SnakeCell(x, y)) {
+      // push poison into poison vector / queue <---------- ADD
+      // food.x = x;
+      // food.y = y;
+      return;
+    }
+  }
+}
 
 void Game::PlaceFood() {
   int x, y;
@@ -66,6 +80,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
+  // -> ADD: poison placement if last in queue is reaching life limits <-----------------------------------------------
   if (!snake.alive) return;
 
   snake.Update();

@@ -18,6 +18,8 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
+  // ADD: vector of unique pointers to poison items; multi-threaded, lifetime limited
+  // Consider queue rather than vector for FIFO. <---------------------------------------------------------------------
 
   std::random_device dev;
   std::mt19937 engine;
@@ -25,7 +27,7 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
-
+  void PlacePoison(); // <-- Added function to place Poison Items onto the map.
   void PlaceFood();
   void Update();
 };
