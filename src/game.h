@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include <random>
+#include <vector>
+#include <memory>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
@@ -18,8 +20,9 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
-  // ADD: vector of unique pointers to poison items; multi-threaded, lifetime limited
-  // Consider queue rather than vector for FIFO. <---------------------------------------------------------------------
+  
+  // ADD: vector of unique pointers to poison items
+  std::vector<SDL_Point> all_poison;
 
   std::random_device dev;
   std::mt19937 engine;
