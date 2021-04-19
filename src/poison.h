@@ -3,7 +3,7 @@
 #include "SDL.h"
 class Poison {
 	public:
-	Poison(int x, int y) : x(x), y(y){
+	Poison(int x, int y){
 		// placement while loop taken care of in game.cpp; assume x and y are valid coord. 
 		poison_graphic.x = x;
 		poison_graphic.y = y;
