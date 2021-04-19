@@ -41,7 +41,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     }
   }
 }
-
 void Game::PlacePoison(){
   // Method adds a poison item to the all_poison vector.
   int x, y;
@@ -50,6 +49,7 @@ void Game::PlacePoison(){
     x = random_w(engine);
     y = random_h(engine);
     if (!snake.SnakeCell(x, y)) {
+      // No check for two poison on one spot; simply makes poison live longer.
       poison.x = x;
       poison.y = y;
       all_poison.push_back(poison);
@@ -57,7 +57,6 @@ void Game::PlacePoison(){
     }
   }
 }
-
 void Game::PlaceFood() {
   int x, y;
   while (true) {
@@ -92,7 +91,6 @@ void Game::Update() {
       snake.alive = false;
     }
   }
-
 }
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
