@@ -1,9 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-
 #include <vector>
 #include "SDL.h"
-
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
@@ -22,7 +20,6 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;  // Snake body vector
-
  private:
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
@@ -30,9 +27,7 @@ class Snake {
   int grid_width;
   int grid_height;
 };
-
 #endif
-
 /*
 --> Snake class
 - Snake Constructor puts snake head into center of map. Direction defaults to up until set 
