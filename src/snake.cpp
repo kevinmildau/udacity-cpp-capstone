@@ -50,7 +50,6 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
     }
-    // --> ADD: add on poison cell check loop through all active poison cells. <---------------------------------------
   }
 }
 void Snake::GrowBody() { growing = true; }
