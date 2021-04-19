@@ -41,8 +41,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     }
   }
 }
-// -> ADD: PlacePoison method. <---------------------------------------------------------------------------------------
+
 void Game::PlacePoison(){
+  // Method adds a poison item to the all_poison vector.
   int x, y;
   SDL_Point poison;
   while (true) {
@@ -56,6 +57,7 @@ void Game::PlacePoison(){
     }
   }
 }
+
 void Game::PlaceFood() {
   int x, y;
   while (true) {
