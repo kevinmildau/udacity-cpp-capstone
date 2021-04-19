@@ -8,6 +8,7 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "poison.h"
 
 class Game {
  public:
@@ -23,6 +24,7 @@ class Game {
   
   // ADD: vector of unique pointers to poison items
   std::vector<SDL_Point> all_poison;
+  std::vector<float> poison_time_left;
 
   std::random_device dev;
   std::mt19937 engine;

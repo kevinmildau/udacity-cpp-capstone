@@ -91,6 +91,16 @@ void Game::Update() {
       snake.alive = false;
     }
   }
+  // Update all_poison vector
+  /*
+  for (auto const &poison : all_poison){
+    if (poison.time_left <= 0) { // <----------------------------------------------- need poison class with life left argument. 
+      all_poison.erase(poison);
+    }
+  }
+  */
 }
+
+
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
