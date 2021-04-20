@@ -1,6 +1,9 @@
 #include "renderer.h"
 #include <iostream>
 #include <string>
+#include <vector>
+#include <poison.h>
+
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
                    const std::size_t grid_width, const std::size_t grid_height)
@@ -32,7 +35,7 @@ Renderer::~Renderer() {
   SDL_DestroyWindow(sdl_window);
   SDL_Quit();
 }
-void Renderer::Render(Snake const snake, SDL_Point const &food) {
+void Renderer::Render(Snake const snake, SDL_Point const &food, std::vector<Poison> &all_poison) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -41,6 +44,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
   SDL_RenderClear(sdl_renderer);
   // Render Poison 
   // -> ADD: for loop to render all poison items in the poison vector. ------------------------------------------------
+  SDL_SetRenderDrawColor(sdl_renderer, 118, 211, 103, 250);
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   block.x = food.x * block.w;

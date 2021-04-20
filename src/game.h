@@ -20,8 +20,6 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
-
-  // Add Poison Lifetime variable
   // Not that size_t are implicitly converted to int here
   int plifetime;
   int spawntime; // <- total number of frames until spawn
@@ -29,7 +27,6 @@ class Game {
   // Poison vector
   std::vector<Poison> all_poison;
   int max_poison;
-
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;

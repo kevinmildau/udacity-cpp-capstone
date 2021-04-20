@@ -29,12 +29,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, food, all_poison);
     frame_end = SDL_GetTicks();
-    // Keep track of how long each loop through the input/update/render cycle
-    // takes.
-    // HERE OR IN UPDATE: ADD POISON PLACEMENT AND UPDATING ON EACH FRAME. USE FRAME COUNTING FOR TIME KEEPING. 
-    // IF FRAMES-LEFT <= 0 : DELETE A POISON, HAVE A TIME TO POISON SPAWN TIMER OF SIMILAR TYPE<----
     frame_count++;
     frame_duration = frame_end - frame_start;
     // After every second, update the window title.
@@ -80,7 +76,6 @@ void Game::PlaceFood() {
   }
 }
 void Game::Update() {
-  // -> ADD: poison placement if last in queue is reaching life limits <-----------------------------------------------
   if (!snake.alive) return;
   snake.Update();
   int new_x = static_cast<int>(snake.head_x);
