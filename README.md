@@ -4,7 +4,25 @@ Based on Udacity capstone started code: https://github.com/udacity/CppND-Capston
 The implemented game works similarly to the base snake game, but adds incrementially more abundant poison objects that need to be avoided.
 
 # Code Overview
-...
+
+## Added poison class
+I've added the poison.h file to the project. This file contains the Poison class container which contains an SDL_Point, a frames_left variable and and update method to reduce frames_left during each game loop. The constructor creates the SDL point object using the input coordinates and initializes the frames left based on poison life time as specified in the main.cpp and incorporated as an attribute in the game class.
+
+## Game Class changes
+- Game::PlacePoison() & Game::PlaceFood: a method PlacePoison was added that, similarly to PlaceFood(), adds a poison block provided it doesn't overlap with the body of the snake. In order to further prevent any sudden death moments through the placement of poison right infront of the snake head, the SnakeCell() method was changed into a proximity check that assures the food and poison objects are at least a certain distance (1/5 of the grid width) away from the snake head.
+- Game::Game() : added a number of variables as input to allow main game experience to be set in main.cpp
+- Game::Update() : 
+Poison object spawns and lifetime checks happen in the game::Update(). A frame based timer variable was added to game to allow poison to be placed gradually (1 per second max).
+- Game class now contains a few new member variables: all_poison which is a vector for poison class objects, as well as a number of poison lifetime and spawn cycle related variables.
+
+## Snake Class Changes
+- Snake::SnakeCell() turned into Snake::SnakeCellProxCheck(): a proximity check that assures the food and poison objects are at least a certain distance (1/5 of the grid width) away from the snake head. For poison, this avoids any sudden deaths caused by poison to spawn right in front of the snake.
+
+## Renderer Class Changes
+- Renderer::Render() : now accepts all_poison vector as input and includes a render loop for the poison objects. Poison objects color is specified using int based RGB (light green).
+
+## main.cpp changes
+Minor changes only; a few new variables that are passed to the game class. All related to framerate and poison lifetime and spawn cycles. 
 
 # Fulfilled Project Rubrics
 ## Mandatory Rubrics

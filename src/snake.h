@@ -28,12 +28,3 @@ class Snake {
   int grid_height;
 };
 #endif
-/*
---> Snake class
-- Snake Constructor puts snake head into center of map. Direction defaults to up until set 
-  otherwise.
-- Body of snake is a vector of coordinates (SDL-Point).
-- Private member variables include grid width and grid height for dimension knowledge of snake 
-  environment.
-- used an enum called Direction to organize the four possible movement directions.
-*/
