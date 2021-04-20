@@ -4,14 +4,15 @@
 
 class Poison {
 	public:
-	Poison(int x, int y){
+	Poison(int x, int y, int poison_lifetime){
 		// placement while loop taken care of in game.cpp; assume x and y are valid coord. 
 		poison_graphic.x = x;
 		poison_graphic.y = y;
+		frames_left = poison_lifetime;
 	}
 	void Update(); // update frames left by -1 frame; run each frame
   bool alive = true;
 	SDL_Point poison_graphic; 
-	std::size_t frames_left = kPoisonLifeTime; // seconds left before Poison expires; <-- not sure whether size_t is the right type here
+	int frames_left; // frames left before Poison expires
 };
 #endif

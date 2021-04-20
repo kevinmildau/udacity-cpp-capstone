@@ -3,7 +3,8 @@
 #include "SDL.h"
 // game constructor
 Game::Game(std::size_t grid_width, std::size_t grid_height, 
-           std::size_t poison_lifetime, std::size_t spawn_cooldown)
+           std::size_t poison_lifetime, std::size_t spawn_cooldown,
+           int max_number_poison)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
@@ -11,6 +12,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height,
   plifetime = poison_lifetime;
   spawntime = spawn_cooldown; 
   frames_until_spawn = spawn_cooldown;
+  max_poison = max_number_poison;
   PlaceFood();
 }
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -51,14 +53,12 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 void Game::PlacePoison(){
   // Method adds a poison item to the all_poison vector.
   int x, y;
-  SDL_Point poison;
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
     if (!snake.SnakeCell(x, y)) {
       // No check for two poison on one spot; simply makes poison live longer.
-      poison.x = x;
-      poison.y = y;
+      Poison poison(x,y,plifetime);
       all_poison.push_back(poison);
       return;
     }
@@ -90,11 +90,15 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    snake.speed += 0.005; // slowed down speed increase
+    if (score % 5 == 0){ // allow for more poison as score increases
+      std::cout << "Increasing difficulty: max poison +1!\n"; 
+      max_poison++;
+    }
   }
   // Check if there's poison over here
   for (auto const &poison : all_poison){
-    if (new_x == poison.x && new_y == poison.y) {
+    if (new_x == poison.poison_graphic.x && new_y == poison.poison_graphic.y) {
       snake.alive = false;
     }
   }

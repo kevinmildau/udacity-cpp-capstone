@@ -12,10 +12,11 @@ int main() {
   constexpr std::size_t kScreenHeight{640};
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
+  constexpr int kMaxNumberPoison{10}; // maximum number of poison blocks on map
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
-  Game game(kGridWidth, kGridHeight, kPoisonLifeTime, kSpawnTime);
+  Game game(kGridWidth, kGridHeight, kPoisonLifeTime, kSpawnTime, kMaxNumberPoison);
   game.Run(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
