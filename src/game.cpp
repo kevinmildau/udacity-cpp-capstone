@@ -2,12 +2,15 @@
 #include <iostream>
 #include "SDL.h"
 // game constructor
-Game::Game(std::size_t grid_width, std::size_t grid_height, int poison_lifetime)
+Game::Game(std::size_t grid_width, std::size_t grid_height, 
+           std::size_t poison_lifetime, std::size_t spawn_cooldown)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
   plifetime = poison_lifetime;
+  spawntime = spawn_cooldown; 
+  frames_until_spawn = spawn_cooldown;
   PlaceFood();
 }
 void Game::Run(Controller const &controller, Renderer &renderer,

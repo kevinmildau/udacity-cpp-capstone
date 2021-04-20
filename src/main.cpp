@@ -6,6 +6,7 @@
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kPoisonLifeTime{kFramesPerSecond * 5}; // 5 seconds lifetime
+  constexpr std::size_t kSpawnTime{kFramesPerSecond * 2}; // new poison spawn every 2 seconds
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   constexpr std::size_t kScreenWidth{640};
   constexpr std::size_t kScreenHeight{640};
@@ -14,7 +15,7 @@ int main() {
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
-  Game game(kGridWidth, kGridHeight, kPoisonLifeTime);
+  Game game(kGridWidth, kGridHeight, kPoisonLifeTime, kSpawnTime);
   game.Run(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
