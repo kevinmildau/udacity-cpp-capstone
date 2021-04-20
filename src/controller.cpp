@@ -44,4 +44,5 @@ interface between valid control input and changeDirection based on SDL2 library.
 reference as an input, as well as a reference to a boolean called running. Running is defined as 
 true in front of the gameloop in game.cpp. Unless the gameloop is terminated, it will always be
 true.
+--> No modifications necessary here.
 */

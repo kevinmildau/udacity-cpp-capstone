@@ -1,11 +1,13 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
-Game::Game(std::size_t grid_width, std::size_t grid_height)
+// game constructor
+Game::Game(std::size_t grid_width, std::size_t grid_height, int poison_lifetime)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
+  plifetime = poison_lifetime;
   PlaceFood();
 }
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -25,6 +27,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_end = SDL_GetTicks();
     // Keep track of how long each loop through the input/update/render cycle
     // takes.
+    // HERE OR IN UPDATE: ADD POISON PLACEMENT AND UPDATING ON EACH FRAME. USE FRAME COUNTING FOR TIME KEEPING. 
+    // IF FRAMES-LEFT <= 0 : DELETE A POISON, HAVE A TIME TO POISON SPAWN TIMER OF SIMILAR TYPE<----
     frame_count++;
     frame_duration = frame_end - frame_start;
     // After every second, update the window title.

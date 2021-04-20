@@ -1,6 +1,7 @@
 #ifndef POISON_H
 #define POISON_H
 #include "SDL.h"
+
 class Poison {
 	public:
 	Poison(int x, int y){
@@ -8,8 +9,9 @@ class Poison {
 		poison_graphic.x = x;
 		poison_graphic.y = y;
 	}
-	void Update(float time_elapsed); // updated time left given float input in seconds
+	void Update(); // update frames left by -1 frame; run each frame
+  bool alive = true;
 	SDL_Point poison_graphic; 
-	float seconds_left = 6.0; // seconds left before Poison expires
+	std::size_t frames_left = kPoisonLifeTime; // seconds left before Poison expires; <-- not sure whether size_t is the right type here
 };
 #endif
