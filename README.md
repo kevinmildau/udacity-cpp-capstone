@@ -6,7 +6,7 @@ The implemented game works similarly to the base snake game, but adds incrementi
 # Code Overview
 
 ## Added poison class
-I've added the poison.h file to the project. This file contains the Poison class container which contains an SDL_Point, a frames_left variable and and update method to reduce frames_left during each game loop. The constructor creates the SDL point object using the input coordinates and initializes the frames left based on poison life time as specified in the main.cpp and incorporated as an attribute in the game class.
+I've added the poison.h file to the project. This file contains the Poison class container which contains an SDL_Point, a frames_left variable and update method to reduce frames_left during each game loop. The constructor creates the SDL point object using the input coordinates and initializes the frames left based on poison life time as specified in the main.cpp and incorporated as an member variable in the game class.
 
 ## Game Class changes
 - Game::PlacePoison() & Game::PlaceFood: a method PlacePoison was added that, similarly to PlaceFood(), adds a poison block provided it doesn't overlap with the body of the snake. In order to further prevent any sudden death moments through the placement of poison right infront of the snake head, the SnakeCell() method was changed into a proximity check that assures the food and poison objects are at least a certain distance (1/5 of the grid width) away from the snake head.
