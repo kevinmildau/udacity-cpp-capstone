@@ -56,9 +56,10 @@ void Snake::GrowBody() { growing = true; }
 
 // Inefficient method to check if cell is occupied by snake.
 bool Snake::SnakeCellProxCheck(int x, int y) {
-  // Added minimal distance of new food or poison to head condition for PlaceFood / PlacePoison
+  // Added minimal distance of new food or poison to head condition for PlaceFood / PlacePoison;
+  // min distance is function of grid width
   float distance = sqrt( pow((x-head_x), 2) + pow((y-head_y), 2));
-  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y) && distance < 20) {
+  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y) && distance < (grid_width / 5)) {
 
     return true;
   }
