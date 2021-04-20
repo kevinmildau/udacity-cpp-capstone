@@ -55,6 +55,11 @@ Classes abstract implementation details from their interfaces. All class member 
 - Poison class allows for both an SDL_Point to be stored, as well as for the addition of limited life time to the poison objects.
 
 ### Rubric 4
-...
+The project reads data from a file and process the data, or the program writes data to a file. The project reads data from an external file or writes data to a file as part of the necessary operation of the program.
+- a high score is saved to file and replaced if game ends with higher score. 
+
 ### Rubric 5
-...
+The project demonstrates an understanding of C++ functions and control structures. A variety of control structures are used in the project. The project code is clearly organized into functions.
+- all operations are conducted in relevant functions or class methods
+- all_poison vector is traversed using loops, checked for expired poison and upated.
+

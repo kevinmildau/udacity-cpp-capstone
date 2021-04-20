@@ -117,7 +117,5 @@ void Game::Update() {
     frames_until_spawn = spawntime;
   }
 }
-
-
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
