@@ -11,6 +11,7 @@ class Poison {
 		frames_left = poison_lifetime;
 	};
 	void Update(){
+		// Update frames_left by -1. Set alive to false if frames left reaches 0 or lower.
 	  frames_left = frames_left - 1;
 	  if (frames_left <= 0){
 	    alive = false;

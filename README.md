@@ -1,7 +1,7 @@
 # CPPND: Capstone Snake Game Project
 Based on Udacity capstone started code: https://github.com/udacity/CppND-Capstone-Snake-Game
 
-The implemented game works similarly to the base snake game, but adds incrementially more abundant poison objects that need to be avoided.
+The implemented game works similarly to the base snake game, but adds incrementially more abundant poison objects that need to be avoided. The poison landscape is continuously changing through a limited lifetime for each poison object.
 
 # Code Overview
 
@@ -39,11 +39,21 @@ cmake.. && make && ./SnakeGame
 ## Additional Rubrics Satisfied 
 
 ### Rubric 1
-...
+The project uses Object Oriented Programming techniques. The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
+
+- Poison class added into Snake Game
+- Poison class has a constructor and an update method.
+- Poison is spawned and stored in game class methods. Poison is rendered in rendere class methods.
+
 ### Rubric 2
-...
+Classes use appropriate access specifiers for class members. All class data members are explicitly specified as public, protected, or private.
+- Poison class members are explicitly specified as public. 
+
 ### Rubric 3
-...
+Classes abstract implementation details from their interfaces. All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
+- Poison class update and constructor methods have clear documentation and usage case.
+- Poison class allows for both an SDL_Point to be stored, as well as for the addition of limited life time to the poison objects.
+
 ### Rubric 4
 ...
 ### Rubric 5
