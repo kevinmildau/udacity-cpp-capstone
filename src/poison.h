@@ -9,8 +9,13 @@ class Poison {
 		poison_graphic.x = x;
 		poison_graphic.y = y;
 		frames_left = poison_lifetime;
-	}
-	void Update(); // update frames left by -1 frame; run each frame
+	};
+	void Update(){
+	  frames_left = frames_left - 1;
+	  if (frames_left <= 0){
+	    alive = false;
+	  }
+	};
   bool alive = true;
 	SDL_Point poison_graphic; 
 	int frames_left; // frames left before Poison expires

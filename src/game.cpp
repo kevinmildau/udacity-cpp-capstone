@@ -1,6 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include "poison.h"
 // game constructor
 Game::Game(std::size_t grid_width, std::size_t grid_height, 
            std::size_t poison_lifetime, std::size_t spawn_cooldown,
@@ -102,14 +103,23 @@ void Game::Update() {
       snake.alive = false;
     }
   }
-  // Update all_poison vector
-  /*
-  for (auto const &poison : all_poison){
-    if (poison.time_left <= 0) { // <----------------------------------------------- need poison class with life left argument. 
+  // Update all_poison vector; remove frame from time_left and remove from all_poison if no time
+  for (std::vector<Poison>::iterator poison=all_poison.begin(); poison!=all_poison.end();){
+    poison->Update();
+    if(poison->frames_left<=0) {
+      poison -> alive = false; // not necessary...
       all_poison.erase(poison);
+    } else {
+      ++poison;
     }
   }
-  */
+  // Next placement poison routine; first decrease frames until spawn by one
+  frames_until_spawn--;
+  // add new poison & reset frames until spawn
+  if (frames_until_spawn <= 0 && size(all_poison) < max_poison){
+    Game::PlacePoison();
+    frames_until_spawn = spawntime;
+  }
 }
 
 
