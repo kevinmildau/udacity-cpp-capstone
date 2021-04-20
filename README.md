@@ -22,7 +22,8 @@ Poison object spawns and lifetime checks happen in the game::Update(). A frame b
 - Renderer::Render() : now accepts all_poison vector as input and includes a render loop for the poison objects. Poison objects color is specified using int based RGB (light green).
 
 ## main.cpp changes
-Minor changes only; a few new variables that are passed to the game class. All related to framerate and poison lifetime and spawn cycles. 
+- a few new variables that are passed to the game class. All related to framerate and poison lifetime and spawn cycles. 
+- a new read and write routine is added that keeps track of the highscore. 
 
 # Fulfilled Project Rubrics
 ## Mandatory Rubrics
