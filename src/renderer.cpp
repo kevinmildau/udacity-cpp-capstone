@@ -43,8 +43,14 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, std::vector<Pois
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
   // Render Poison 
-  // -> ADD: for loop to render all poison items in the poison vector. ------------------------------------------------
+  // for loop to render all poison items in the poison vector. 
   SDL_SetRenderDrawColor(sdl_renderer, 118, 211, 103, 250);
+  for (std::vector<Poison>::iterator poison=all_poison.begin(); poison!=all_poison.end();){
+    block.x = poison->poison_graphic.x * block.w;
+    block.y = poison->poison_graphic.y * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+    ++poison;
+  }
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   block.x = food.x * block.w;

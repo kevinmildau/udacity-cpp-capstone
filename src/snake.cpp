@@ -53,9 +53,13 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   }
 }
 void Snake::GrowBody() { growing = true; }
+
 // Inefficient method to check if cell is occupied by snake.
-bool Snake::SnakeCell(int x, int y) {
-  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
+bool Snake::SnakeCellProxCheck(int x, int y) {
+  // Added minimal distance of new food or poison to head condition for PlaceFood / PlacePoison
+  float distance = sqrt( pow((x-head_x), 2) + pow((y-head_y), 2));
+  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y) && distance < 20) {
+
     return true;
   }
   for (auto const &item : body) {

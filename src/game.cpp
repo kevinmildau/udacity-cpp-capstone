@@ -53,10 +53,12 @@ void Game::PlacePoison(){
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
-    if (!snake.SnakeCell(x, y)) {
+    if (!snake.SnakeCellProxCheck(x, y)) {
+      std::cout << "reached add poison; valid xy found \n";
       // No check for two poison on one spot; simply makes poison live longer.
       Poison poison(x,y,plifetime);
       all_poison.push_back(poison);
+      std::cout << "poison added to all poison\n";
       return;
     }
   }
@@ -68,7 +70,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
+    if (!snake.SnakeCellProxCheck(x, y)) {
       food.x = x;
       food.y = y;
       return;
@@ -96,6 +98,7 @@ void Game::Update() {
   for (auto const &poison : all_poison){
     if (new_x == poison.poison_graphic.x && new_y == poison.poison_graphic.y) {
       snake.alive = false;
+      std::cout << "Poison Consumed! GAME OVER!\n";
     }
   }
   // Update all_poison vector; remove frame from time_left and remove from all_poison if no time
@@ -112,8 +115,10 @@ void Game::Update() {
   frames_until_spawn--;
   // add new poison & reset frames until spawn
   if (frames_until_spawn <= 0 && size(all_poison) < max_poison){
+    std::cout << "reached add poison placement point - before \n";
     Game::PlacePoison();
     frames_until_spawn = spawntime;
+    std::cout << "reached a new poison placement point - after \n";
   }
 }
 

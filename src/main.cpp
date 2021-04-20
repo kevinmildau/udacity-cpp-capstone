@@ -5,8 +5,8 @@
 
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
-  constexpr std::size_t kPoisonLifeTime{kFramesPerSecond * 5}; // 5 seconds lifetime
-  constexpr std::size_t kSpawnTime{kFramesPerSecond * 2}; // new poison spawn every 2 seconds
+  constexpr std::size_t kPoisonLifeTime{kFramesPerSecond * 20}; // 20 seconds lifetime
+  constexpr std::size_t kSpawnTime{kFramesPerSecond * 1}; // new poison spawn every 1 seconds
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   constexpr std::size_t kScreenWidth{640};
   constexpr std::size_t kScreenHeight{640};

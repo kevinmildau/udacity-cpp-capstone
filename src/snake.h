@@ -12,7 +12,7 @@ class Snake {
         head_y(grid_height / 2) {}
   void Update();
   void GrowBody();
-  bool SnakeCell(int x, int y);
+  bool SnakeCellProxCheck(int x, int y);
   Direction direction = Direction::kUp; // snake movement initialized to up direction.
   float speed{0.1f};
   int size{1};
